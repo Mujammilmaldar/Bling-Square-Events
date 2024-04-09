@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+</head>
+<body>
+    <h1>Mark Attendance</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="shift">Select Shift:</label>
+        <select name="shift" id="shift">
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+            <option value="night">Night</option>
+        </select>
+        
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Shift</th>
+                    <th>Mark Attendance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.username }}</td>
+                    <td>
+                        <ul>
+                            {% for shift_info in shift_information.employee.id %}
+                            <li>{{ shift_info.start_time|date:"H:i" }} - {{ shift_info.end_time|date:"H:i" }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <label><input type="checkbox" name="present_employee" value="{{ employee.id }}"> Present</label>
+                        <input type="hidden" name="employee_id" value="{{ employee.id }}">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <button type="submit">Submit Attendance</button>
+    </form>
+</body>
+</html>

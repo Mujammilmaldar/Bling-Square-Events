@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<head>
+    <style>
+        /* Custom scrollbar */
+        .custom-scrollbar {
+            max-height: 300px; /* Set the max height for scrollbar */
+            overflow-y: auto;
+            scrollbar-width: thin; /* For Firefox */
+            scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1); /* For Firefox */
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px; /* Width of the scrollbar */
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.5); /* Color of the thumb */
+            border-radius: 4px; /* Radius of the thumb */
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.1); /* Color of the track */
+        }
+    </style>
+</head>
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <div class="card p-5 m-4">
+        <div class="card-head text-center bg-primary" >
+            <h1 style="color: white;">{% trans "Event Detail" %}</h1>
+        </div>
+        <div class="card-body m-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>{% trans "Event Information" %}</h2>
+                    <p><strong>{% trans "Event Type" %}:</strong> {{ event.get_type_of_event_display }}</p>
+                    <p><strong>{% trans "Venue" %}:</strong> {{ event.venue.name }}</p>
+                    <p><strong>{% trans "Start Date" %}:</strong> {{ event.start_date }}</p>
+                    <p><strong>{% trans "End Date" %}:</strong> {{ event.end_date }}</p>
+                    <p><strong>{% trans "Status" %}:</strong> {{ event.get_status_display }}</p>
+                    <p><strong>{% trans "Mode of Payment" %}:</strong> {{ event.get_mode_of_payment_display }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>{% trans "Client Information" %}</h2>
+                    <p><strong>{% trans "Name" %}:</strong> {{ client.name }}</p>
+                    <p><strong>{% trans "Number" %}:</strong> {{ client.number }}</p>
+                    <p><strong>{% trans "Email" %}:</strong> {{ client.email }}</p>
+                    <p><strong>{% trans "Bookings Count" %}:</strong> {{ client.bookings_count }}</p>
+                    <p><strong>{% trans "Lead Person" %}:</strong> {{ client.leadperson }}</p>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>{% trans "Sales Information" %}</h2>
+                    {% if sales %}
+                        {% for sale in sales %}
+                            <p><strong>{% trans "Amount" %}:</strong> {{ sale.amount }}</p>
+                            <p><strong>{% trans "Discount" %}:</strong> {{ sale.discount }}</p>
+                            <p><strong>{% trans "Date" %}:</strong> {{ sale.date }}</p>
+                            <p><strong>{% trans "Payment Status" %}:</strong> {{ sale.get_payment_status_display }}</p>
+                            <p><strong>{% trans "Payment" %}:</strong> {{ sale.payment }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>{% trans "No sales data available for this client." %}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <h2>{% trans "Expenses Information" %}</h2>
+                {% if expenses %}
+                    <div class="table-responsive custom-scrollbar">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>{% trans "Sr.No" %}</th>
+                                    <th>{% trans "Vendor Name" %}</th>
+                                    <th>{% trans "Particulars" %}</th>
+                                    <th>{% trans "Details" %}</th>
+                                    <th>{% trans "Amount" %}</th>
+                                    <th>{% trans "Payment Status" %}</th>
+                                    <!-- Add more table headers as needed -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for expense in expenses %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ expense.vendor.name }}</td>
+                                        <td>{{ expense.particulars }}</td>
+                                        <td>{{ expense.details }}</td>
+                                        <td>{{ expense.amount }}</td>
+                                        <td>{{ expense.payment_status }}</td>
+                                        <!-- Add more table cells as needed -->
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p>{% trans "No expenses found." %}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main> 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const expensesContainer = document.getElementById('expenses-container');
+        const addExpenseButton = document.getElementById('add-expense');
+
+        let expenseIndex = 0;
+
+        addExpenseButton.addEventListener('click', function () {
+            const expenseForm = `
+            <div class="expense-form mt-2">
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="id_particulars">Particulars:</label>
+                        <input type="text" name="expenses-${expenseIndex}-particulars" class="form-control" placeholder="Particulars">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="id_details">Details:</label>
+                        <input name="expenses-${expenseIndex}-details" class="form-control" placeholder="Details"></textarea>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="id_amount">Amount:</label>
+                        <input type="text" name="expenses-${expenseIndex}-amount" class="form-control" placeholder="Amount">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group">
+                        <label for="id_payment_status">Payment Status:</label>
+                        <select name="expenses-${expenseIndex}-payment_status" class="form-control slect">
+                            <option value="paid">Paid</option>
+                            <option value="not_paid">Not Paid</option>
+                            <option value="half_paid">Half Paid</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="id_mode_of_payment">Mode of Payment:</label>
+                        <select name="expenses-${expenseIndex}-mode_of_payment" class="slect form-control">
+                            <option value="cash">Cash</option>
+                            <option value="cheque">Cheque</option>
+                            <option value="online">Online</option>
+                            <option value="not_yet_decided">Not Yet Decided</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="id_payment_made_by">Payment Made By:</label>
+                        <input type="text" name="expenses-${expenseIndex}-payment_made_by" class="form-control" placeholder="Payment Made By">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="id_photo">Photo:</label>
+                    <input type="file" name="expenses-${expenseIndex}-photo" class="form-control">
+                </div>
+                <button type="button" class="btn btn-danger remove-expense mt-2">Remove</button>
+            </div>
+            `;
+            expensesContainer.insertAdjacentHTML('beforeend', expenseForm);
+            expenseIndex++;
+        });
+
+        expensesContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('remove-expense')) {
+                event.target.parentElement.remove();
+            }
+        });
+    });
+</script>
+{% endblock main %}
+    

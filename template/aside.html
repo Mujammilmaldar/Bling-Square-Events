@@ -1,0 +1,241 @@
+{% load static %}
+{% load i18n %}
+
+<body class="g-sidenav-show bg-gray-200">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark" id="sidenav-main">
+     <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+    <a class="navbar-brand m-0" href="/home">
+      <!-- <img src="{% static '/assets/img/logo.png' %}" class="navbar-brand-img h-100" alt="main_logo"> -->
+      <h3 class="ms-1 font-weight-bold text-white">{% trans "Bling Essence" %}</h3>
+    </a>
+  </div>
+  <hr class="horizontal light mt-0 mb-2">
+  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#profile-nav" data-bs-toggle="collapse" href="#">
+          <!-- <img src="{% static '{{request.user.image.url}}' %}" class="navbar-brand-img h-100" alt="main_logo"> -->
+          <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+            <img src="{{request.user.photo.url}}" class="navbar-brand-img h-100 width-1" alt="main_logo">
+          </div>
+          <span class="nav-link-text ms-1"> {{request.user.username}} </span>
+          <!-- <i class="bi bi-chevron-down ms-auto"></i> -->
+        </a>
+        <ul style="list-style: none; background: transparent;" id="profile-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li>
+            <a class="nav-link bg-transparent text-white" href="/profile">
+              <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <span class="nav-link-text ms-1">{% trans "Profile" %}</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link bg-transparent text-white" href="/logout">
+              <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                <i class="bi bi-box-arrow-right text-white"></i>
+              </div>
+              <span class="nav-link-text ms-1">{% trans "Logout" %}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+      <ul class="navbar-nav">
+
+        <hr class="horizontal light mt-0 mb-2">
+        <li class="nav-item">
+          <a class="nav-link text-white active {% if request.path == '/home' %}active bg-gradient-primary {% else %} bg-transparent {% endif %}" href="/home">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+            <span class="nav-link-text ms-1">{% trans "Dashboard" %}</span>
+          </a>
+        </li>
+      </li>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link collapsed {% if request.path == '/Ongoing_Events' or request.path == '/All_Events' or request.path == '/Upcoming_Events' or request.path == '/All_Events' or request.path == '/update_event/<eid>' %}active bg-gradient-primary{% endif %}" data-bs-target="#sales-nav" data-bs-toggle="collapse" href="#">
+            <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                <i class="bi bi-journal-text"></i>
+                </div>
+                <span class="nav-link-text ms-1">{% trans "Sales" %}</span>
+            </a>
+            <ul style="list-style: none; background: transparent;" id="sales-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a class="nav-link bg-transparent text-white" href="/add_event/">
+                        <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">{% trans "Add Events" %}</span>
+                    </a>
+                    <li>
+                        <a class="nav-link bg-transparent text-white" href="/Upcoming_Events">
+                            <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                                <i class="bi bi-calendar2-check"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">{% trans "Upcoming Events" %}</span>
+                        </a>
+                    </li>
+                </li>
+                <li>
+                    <a class="nav-link bg-transparent text-white" href="/Ongoing_Events">
+                        <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">{% trans "Ongoing Events" %}</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link bg-transparent text-white" href="/All_Events">
+                        <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                            <i class="bi bi-calendar"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">{% trans "All Events" %}</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+          <a class="nav-link collapsed {% if request.path == '/lead_list/' or request.path == '/lead_entry/' or request.path == '/converted_leads/' or request.path == '/cancel_leads/' %}active bg-gradient-primary{% endif %}" data-bs-target="#lead-nav" data-bs-toggle="collapse" href="#">
+              <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                <i class="bi bi-people"></i>
+              </div>
+              <span class="nav-link-text ms-1">{% trans "Lead Entry Module" %}</span>
+          </a>
+          <ul style="list-style: none; background: transparent;" id="lead-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+              <a class="nav-link bg-transparent text-white" href="/lead_entry/">
+                <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                  <i class="bi bi-calendar-plus"></i>
+                </div>
+                <span class="nav-link-text ms-1">{% trans "Add Leads" %}</span>
+              </a>
+            </li>
+            <li>
+                <a class="nav-link bg-transparent text-white" href="/lead_list/">
+                    <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">{% trans "Funnel Of Leads" %}</span>
+                </a>
+            </li>
+              <li>
+                  <a class="nav-link bg-transparent text-white" href="/converted_leads/">
+                      <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                          <i class="bi bi-arrow-repeat"></i>
+                      </div>
+                      <span class="nav-link-text ms-1">{% trans "Converted Leads" %}</span>
+                  </a>
+              </li>
+              <li>
+                  <a class="nav-link bg-transparent text-white" href="/cancel_leads/">
+                      <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                          <i class="bi bi-x-circle"></i>
+                      </div>
+                      <span class="nav-link-text ms-1">{% trans "Cancel Leads" %}</span>
+                  </a>
+              </li>
+          </ul>
+      </li>
+  </ul>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link collapsed {% if request.path == '/add_venue/' or request.path == '/venue_list/' %}active bg-gradient-primary{% endif %}" data-bs-target="#venue-nav" data-bs-toggle="collapse" href="#">
+        <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+          <i class="bi bi-house-door"></i>
+        </div>
+        <span class="nav-link-text ms-1">{% trans "Venue" %}</span>
+      </a>
+      <ul style="list-style: none; background: transparent;" id="venue-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+        <li>
+          <a class="nav-link bg-transparent text-white" href="/add_venue">
+            <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+              <i class="bi bi-plus"></i>
+            </div>
+            <span class="nav-link-text ms-1">{% trans "Add Venue" %}</span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link bg-transparent text-white" href="/venue_list/">
+            <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+              <i class="bi bi-list"></i>
+            </div>
+            <span class="nav-link-text ms-1">{% trans "Venue List" %}</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link collapsed {% if request.path == '/Add_Employees/' or request.path == '/Employee_List/' or request.path == '/employee_detail/<eid>' %}active bg-gradient-primary{% endif %}" data-bs-target="#staff-nav" data-bs-toggle="collapse" href="#">
+        <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+            <i class="bi bi-journal-text"></i>
+            </div>
+            <span class="nav-link-text ms-1">{% trans "Staff" %}</span>
+        </a>
+        <ul style="list-style: none; background: transparent;" id="staff-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+                <a class="nav-link bg-transparent text-white" href="/Add_Employees/">
+                    <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">{% trans "Add Employees" %}</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link bg-transparent text-white" href="/Add_Interns/">
+                    <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">{% trans "Add Interns" %}</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-link bg-transparent text-white" href="/Employee_List/">
+                    <div class="text-white text-center me-2 font-weight-bold d-flex align-items-center justify-content-center">
+                        <i class="bi bi-calendar"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">{% trans "Staff List" %}</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
+      <li class="nav-item mt-3">
+        <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">{% trans "Account pages" %}</h6>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white {% if request.path == '/profile/' %}active bg-gradient-primary {% else %} bg-transparent   {% endif %}" href="/profile">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">person</i>
+          </div>
+          <span class="nav-link-text ms-1">{% trans "Profile" %}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white {% if request.path == '/problemreport/' %}active bg-gradient-primary {% else %} bg-transparent   {% endif %}" href="/problemreport/">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+          <span class="nav-link-text ms-1">{% trans "Contact" %}</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white " href="/logout">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">login</i>
+          </div>
+          <span class="nav-link-text ms-1">{% trans "Logout" %}</span>
+        </a>
+      </li>
+    </ul>
+  </ul>
+  </div>
+</aside>

@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{% trans 'Update Employee' %}</h5>
+                <form method="post" enctype="multipart/form-data" class="needs-validation" onsubmit="return validateForm()">
+                    {% csrf_token %}
+                    <style>
+                        /* Custom CSS for label alignment */
+                        .form-label {
+                            display: inline-block;
+                            width: 100%;
+                            /* Adjust width as needed */
+                            text-align: left;
+                            margin-right: 20px;
+                            /* Add some space between label and input */
+                        }
+
+                        /* Custom CSS for input alignment */
+                        .form-control {
+                            width: 100%;
+                            /* Adjust width to fit the remaining space */
+                        }
+
+                        /* Custom CSS for buttons */
+                        .btn-primary {
+                            background-color: #D79865;
+                            color: #582C4F;
+                            border-color: #D79865;
+                            font-weight: bold;
+                            border-radius: 10px;
+                            padding: 6px 12px;
+                            transition: all 0.3s ease;
+                        }
+
+                        .col-md-4 input,
+                        .col-md-4 select {
+                            padding: 6px;
+                            border: 0.02px solid rgba(0, 0, 0, 0.37);
+                        }
+
+                        .btn-primary:hover {
+                            background-color: #b67745;
+                            border-color: #b67745;
+                            color: #fff;
+                        }
+                        .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+    /* Custom CSS for password input field */
+/* Custom CSS for password input field */
+form i {
+            height: 10px;
+            cursor: pointer;
+        }
+        /* Custom CSS for input and button height */
+        input[type="password"],
+        button#togglePassword {
+            height: 38px; /* Adjust height as needed */
+        }
+
+
+.password-toggle {
+    position: relative;
+}
+
+                    </style>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="first_name" class="form-label fw-bold">{% trans 'First Name' %}</label>
+                            <input type="text" name="first_name" id="first_name" class="form-control" value="{{ emp.first_name }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="last_name" class="form-label fw-bold">{% trans 'Last Name' %}</label>
+                            <input type="text" name="last_name" id="last_name" class="form-control" value="{{ emp.last_name }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="username" class="form-label fw-bold">{% trans 'Username' %}</label>
+                            <input type="text" name="username" id="username" class="form-control" value="{{ emp.username }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label>{% trans 'Password' %}:</label>
+                            <div class="input-group">
+                                <input type="password" name="password" id="password" class="form-control" value="{{ emp.password }}">
+                                <div class="input-group-append">
+                                    <button type="button" id="togglePassword" class="btn btn-outline-secondary">
+                                        <i class="bi bi-eye-slash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="email" class="form-label fw-bold">{% trans 'Email' %}</label>
+                            <input type="email" name="email" id="email" class="form-control" value="{{ emp.email }}">
+                        </div>
+                        <!-- Continue with the rest of the input fields -->
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="photo" class="form-label fw-bold">{% trans 'Photo' %}</label>
+                            <input type="file" name="photo" id="photo" class="form-control" value="{{ emp.photo }}">
+                        </div>
+                        
+                        {% if emp.photo %}
+                        <div class="col-md-4 mb-3">
+                            <label for="photo" class="form-label fw-bold">{% trans 'Photo' %}</label>
+                            <img class="text-center" src="{{emp.photo.url}}" alt="{% trans 'Your Photo' %}" style="height: 100px;">
+                        </div>
+                        {% endif %}
+                            
+                        <div class="col-md-4 mb-3">
+                            <label for="gender" class="form-label fw-bold">{% trans 'Gender' %}</label>
+                            <select name="gender" id="gender" class="form-control">
+                                <option value="male" {% if emp.gender == 'male' %} selected {% endif %}>{% trans 'Male' %}</option>
+                                <option value="female" {% if emp.gender == 'female' %} selected {% endif %}>{% trans 'Female' %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="dob" class="form-label fw-bold">{% trans 'Date of Birth' %}</label>
+                            <input type="date" name="dob" id="dob" class="form-control" value="{{ emp.dob|date:'Y-m-d' }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="joiningdate" class="form-label fw-bold">{% trans 'Joining Date' %}</label>
+                            <input type="date" name="joiningdate" id="joiningdate" class="form-control" value="{{ emp.joiningdate|date:'Y-m-d' }}">
+                        </div>
+                        
+                        <div class="col-md-4 mb-3">
+                            <label for="address" class="form-label fw-bold">{% trans 'Address' %}</label>
+                            <input type="text" name="address" id="address" class="form-control" value="{{ emp.address }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="designation" class="form-label fw-bold">{% trans 'Designation' %}</label>
+                            <input type="text" name="designation" id="designation" class="form-control" value="{{ emp.designation }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="mobileno" class="form-label fw-bold">{% trans 'Mobile Number' %}</label>
+                            <input type="text" name="mobileno" id="mobileno" class="form-control" value="{{ emp.mobileno }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="active" class="form-label fw-bold">{% trans 'Active' %}</label>
+                            <input type="hidden" name="active" value="False">  <!-- Hidden input for false value -->
+                            <input type="checkbox" name="active" id="active" class="form-check-input" {% if emp.active %} checked {% endif %} value="True">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="document_field_1" class="form-label fw-bold">{% trans 'Select Document Field 1' %}</label>
+                                <select name="document_field_1" id="document_field_1" class="form-control" required>
+                                    <option value="" disabled>{% trans 'Select Document' %}</option>
+                                    <option value="adharcard" {% if emp.document_field_1 == 'adharcard' %} selected {% endif %}>{% trans 'Aadhar Card' %}</option>
+                                    <option value="pancard" {% if emp.document_field_1 == 'pancard' %} selected {% endif %}>{% trans 'Pan Card' %}</option>
+                                    <option value="voterid" {% if emp.document_field_1 == 'voterid' %} selected {% endif %}>{% trans 'Voter ID' %}</option>
+                                    <option value="license" {% if emp.document_field_1 == 'license' %} selected {% endif %}>{% trans 'License' %}</option>
+                                    <option value="passport" {% if emp.document_field_1 == 'passport' %} selected {% endif %}>{% trans 'Passport' %}</option>
+                                </select>
+                                <input type="file" name="document_file_1" id="document_file_1" class="form-control mb-3" {% if emp.document_file_1 %} {% else %}style="display: none;"{% endif %} required>
+                                
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="document_field_2" class="form-label fw-bold">{% trans 'Select Document Field 2' %}</label>
+                                <select name="document_field_2" id="document_field_2" class="form-control" required>
+                                    <option value="" disabled>{% trans 'Select Document' %}</option>
+                                    <option value="adharcard" {% if emp.document_field_2 == 'adharcard' %} selected {% endif %}>{% trans 'Aadhar Card' %}</option>
+                                    <option value="pancard" {% if emp.document_field_2 == 'pancard' %} selected {% endif %}>{% trans 'Pan Card' %}</option>
+                                    <option value="voterid" {% if emp.document_field_2 == 'voterid' %} selected {% endif %}>{% trans 'Voter ID' %}</option>
+                                    <option value="license" {% if emp.document_field_2 == 'license' %} selected {% endif %}>{% trans 'License' %}</option>
+                                    <option value="passport" {% if emp.document_field_2 == 'passport' %} selected {% endif %}>{% trans 'Passport' %}</option>
+                                </select>
+                                <input type="file" name="document_file_2" id="document_file_2" class="form-control mb-3" {% if emp.document_file_2 %} {% else %}style="display: none;"{% endif %} required>
+</div>
+                        </div>
+                        <script>
+                            document.getElementById('document_field_1').addEventListener('change', function() {
+                                var selectedField = this.value;
+                                var fileInput = document.getElementById('document_file_1');
+                                fileInput.style.display = 'block';
+                                fileInput.setAttribute('name', selectedField + '_file');
+                                fileInput.setAttribute('required', 'required');
+                            
+                                // Disable the same option in the second dropdown
+                                document.getElementById('document_field_2').querySelector(`option[value="${selectedField}"]`).disabled = true;
+                            });
+                            
+                            document.getElementById('document_field_2').addEventListener('change', function() {
+                                var selectedField = this.value;
+                                var fileInput = document.getElementById('document_file_2');
+                                fileInput.style.display = 'block';
+                                fileInput.setAttribute('name', selectedField + '_file');
+                                fileInput.setAttribute('required', 'required');
+                            
+                                // Disable the same option in the first dropdown
+                                document.getElementById('document_field_1').querySelector(`option[value="${selectedField}"]`).disabled = true;
+                            });
+                            </script>
+                        
+                        {% if user %}
+                        <h2>{% trans 'Documents of' %} {{ emp.username }}</h2>
+                        <ul>
+                            {% if doc.adharcard %}
+                                <li><strong>{% trans 'Aadhar Card' %}:</strong> <a href="{{ doc.adharcard.url }}">{{ doc.adharcard }}</a></li>
+                            {% endif %}
+                            {% if doc.pancard %}
+                                <li><strong>{% trans 'Pan Card' %}:</strong> <a href="{{ doc.pancard.url }}">{{ doc.pancard }}</a></li>
+                            {% endif %}
+                            {% if doc.voterid %}
+                                <li><strong>{% trans 'Voter ID' %}:</strong> <a href="{{ doc.voterid.url }}">{{ doc.voterid }}</a></li>
+                            {% endif %}
+                            {% if doc.license %}
+                                <li><strong>{% trans 'License' %}:</strong> <a href="{{ doc.license.url }}">{{ doc.license }}</a></li>
+                            {% endif %}
+                            {% if doc.passport %}
+                                <li><strong>{% trans 'Passport' %}:</strong> <a href="{{ doc.passport.url }}">{{ doc.passport }}</a></li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+                    
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">{% trans 'Add Employee' %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    function validateForm() {
+        var firstName = document.getElementById('first_name').value;
+        var lastName = document.getElementById('last_name').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var email = document.getElementById('email').value;
+        var photo = document.getElementById('photo').value;
+        var gender = document.getElementById('gender').value;
+        var dob = document.getElementById('dob').value;
+        var joiningdate = document.getElementById('joiningdate').value;
+        var address = document.getElementById('address').value;
+        var designation = document.getElementById('designation').value;
+        var mobileno = document.getElementById('mobileno').value;
+    
+        // Validate required fields
+        if (!firstName || !lastName || !username || !password || !email || !photo || !gender || !dob || !joiningdate || !address || !designation || !mobileno) {
+            alert("{% trans 'All fields are required' %}");
+            return false;
+        }
+    
+        // Validate email format
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("{% trans 'Invalid email address' %}");
+            return false;
+        }
+    
+        // Add more validation rules as needed
+    
+        return true;
+    }
+    const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        togglePassword.addEventListener('click', () => {
+            // Toggle the type attribute using getAttribute() method
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // Toggle the eye and bi-eye icon
+            togglePassword.querySelector('i').classList.toggle('bi-eye');
+            togglePassword.querySelector('i').classList.toggle('bi-eye-slash');
+        });
+    </script>
+{% endblock main %}

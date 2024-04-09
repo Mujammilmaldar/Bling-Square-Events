@@ -1,0 +1,979 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-08 16:28+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+#: .\dashboard\models.py:247 .\template\add_expenses.html:97
+msgid "Online"
+msgstr "ઓનલાઇન"
+
+#: .\dashboard\models.py:248
+msgid "Offline"
+msgstr "ઓફલાઈન"
+
+#: .\dashboard\models.py:254
+msgid "Event"
+msgstr "ઈવેન્ટ"
+
+#: .\dashboard\models.py:262
+msgid "User who created the lead"
+msgstr "વપરાશકર્તા જે લીડ બનાવ્યો છે"
+
+#: .\dashboard\models.py:268 .\template\add_event.html:47
+#: .\template\all_events.html:27 .\template\lead_list.html:20
+msgid "Client"
+msgstr "ગ્રાહક"
+
+#: .\dashboard\models.py:275 .\template\lead_list.html:21
+msgid "Source"
+msgstr "સ્રોત"
+
+#: .\dashboard\models.py:279 .\template\home.html:112
+msgid "Rejected"
+msgstr "નકાર્યો"
+
+#: .\dashboard\models.py:284
+msgid "Message"
+msgstr "સંદેશ"
+
+#: .\dashboard\models.py:288
+msgid "Created at"
+msgstr "બનાવવામાં"
+
+#: .\dashboard\models.py:292 .\template\lead_list.html:36
+msgid "Convert"
+msgstr "રૂપાંતર"
+
+#: .\dashboard\models.py:298 .\template\lead_detail.html:102
+#: .\template\update_lead.html:143
+msgid "Referral"
+msgstr "સૂચન"
+
+#: .\dashboard\models.py:302 .\template\lead_list.html:8
+msgid "Lead"
+msgstr "લીડ"
+
+#: .\dashboard\models.py:303
+msgid "Leads"
+msgstr "લીડો"
+
+#: .\template\add_client.html:53
+msgid "Add New Client"
+msgstr "નવો ગ્રાહક ઉમેરો"
+
+#: .\template\add_client.html:58 .\template\client_detail.html:19
+#: .\template\home.html:62 .\template\lead_detail.html:77
+#: .\template\lead_entry.html:110 .\template\update_event.html:48
+#: .\template\update_lead.html:117
+msgid "Client Name"
+msgstr "ગ્રાહક નામ"
+
+#: .\template\add_client.html:64 .\template\lead_detail.html:82
+#: .\template\lead_entry.html:115 .\template\update_event.html:52
+#: .\template\update_lead.html:122
+msgid "Client Number"
+msgstr "ગ્રાહક નંબર"
+
+#: .\template\add_client.html:70 .\template\lead_detail.html:87
+#: .\template\lead_entry.html:120 .\template\update_event.html:56
+#: .\template\update_lead.html:127
+msgid "Client Email"
+msgstr "ગ્રાહક ઇમેઇલ"
+
+#: .\template\add_client.html:76 .\template\add_venue.html:54
+#: .\template\all_events.html:13 .\template\edit_venue.html:30
+msgid "Submit"
+msgstr "સબમિટ"
+
+
+#: .\template\add_employee.html:8 .\template\add_employee.html:211
+#: .\template\update_emp.html:225
+msgid "Add Employee"
+msgstr "કર્મચારી ઉમેરો"
+
+#: .\template\add_employee.html:78 .\template\add_intern.html:77
+#: .\template\update_emp.html:78
+msgid "First Name"
+msgstr "પ્રથમ નામ"
+
+#: .\template\add_employee.html:82 .\template\add_intern.html:81
+#: .\template\update_emp.html:82
+msgid "Last Name"
+msgstr "છેલ્લું નામ"
+
+#: .\template\add_employee.html:86 .\template\add_intern.html:85
+#: .\template\login.html:47 .\template\update_emp.html:86
+msgid "Username"
+msgstr "વપરાશકર્તાનું નામ"
+
+#: .\template\add_employee.html:90 .\template\add_intern.html:89
+#: .\template\login.html:52 .\template\update_emp.html:90
+msgid "Password"
+msgstr "પાસવર્ડ"
+
+#: .\template\add_employee.html:104 .\template\add_intern.html:100
+#: .\template\client_detail.html:20 .\template\employee_detail.html:45
+#: .\template\event_detail.html:48 .\template\profile.html:44
+#: .\template\update_emp.html:101
+msgid "Email"
+msgstr "ઇમેઇલ"
+
+#: .\template\add_employee.html:108 .\template\add_expenses.html:108
+#: .\template\add_intern.html:104 .\template\update_emp.html:107
+#: .\template\update_emp.html:113
+msgid "Photo"
+msgstr "ફોટો"
+
+#: .\template\add_employee.html:112 .\template\add_intern.html:108
+#: .\template\update_emp.html:119
+msgid "Gender"
+msgstr "જાતિ"
+
+#: .\template\add_employee.html:114 .\template\add_intern.html:110
+#: .\template\update_emp.html:121
+msgid "Male"
+msgstr "પુરુષ"
+
+#: .\template\add_employee.html:115 .\template\add_intern.html:111
+#: .\template\update_emp.html:122
+msgid "Female"
+msgstr "સ્ત્રી"
+
+#: .\template\add_employee.html:119 .\template\add_intern.html:115
+#: .\template\update_emp.html:126
+msgid "Date of Birth"
+msgstr "જન્મ તારીખ"
+
+#: .\template\add_employee.html:123 .\template\add_intern.html:119
+#: .\template\update_emp.html:130
+msgid "Joining Date"
+msgstr "જોડાઇ તારીખ"
+
+#: .\template\add_employee.html:127 .\template\add_intern.html:127
+#: .\template\add_venue.html:45 .\template\edit_venue.html:21
+#: .\template\update_emp.html:135 .\template\venue_list.html:21
+msgid "Address"
+msgstr "સરનામું"
+
+#: .\template\add_employee.html:131 .\template\add_intern.html:131
+#: .\template\employee_detail.html:47 .\template\employee_list.html:28
+#: .\template\profile.html:46 .\template\update_emp.html:139
+msgid "Designation"
+msgstr "હેતુસંધિ"
+
+#: .\template\add_employee.html:135 .\template\add_intern.html:135
+#: .\template\update_emp.html:143
+msgid "Mobile Number"
+msgstr "મોબાઇલ નંબર"
+
+#: .\template\add_employee.html:139 .\template\add_intern.html:139
+#: .\template\update_emp.html:147
+msgid "Active"
+msgstr "સક્રિય"
+
+#: .\template\add_employee.html:143 .\template\add_employee.html:145
+#: .\template\add_intern.html:145 .\template\add_intern.html:147
+msgid "Select Category"
+msgstr "શ્રેણી પસંદ કરો"
+
+#: .\template\add_employee.html:146
+msgid "Employee"
+msgstr "કર્મચારી"
+
+#: .\template\add_employee.html:147
+msgid "HR"
+msgstr "એચઆર"
+
+#: .\template\add_employee.html:148
+msgid "Admin"
+msgstr "એડમિન"
+
+#: .\template\add_employee.html:155 .\template\add_intern.html:152
+#: .\template\update_emp.html:153
+msgid "Select Document Field 1"
+msgstr "દસ્તાવેજ ફિલ્ડ 1 પસંદ કરો"
+
+#: .\template\add_employee.html:157 .\template\add_employee.html:169
+#: .\template\add_intern.html:154 .\template\add_intern.html:166
+#: .\template\update_emp.html:155 .\template\update_emp.html:168
+msgid "Select Document"
+msgstr "દસ્તાવેજ પસંદ કરો"
+
+#: .\template\add_employee.html:158 .\template\add_employee.html:170
+#: .\template\add_intern.html:155 .\template\add_intern.html:167
+#: .\template\update_emp.html:156 .\template\update_emp.html:169
+#: .\template\update_emp.html:206
+msgid "Aadhar Card"
+msgstr "આધાર કાર્ડ"
+
+#: .\template\add_employee.html:159 .\template\add_employee.html:171
+#: .\template\add_intern.html:156 .\template\add_intern.html:168
+#: .\template\update_emp.html:157 .\template\update_emp.html:170
+#: .\template\update_emp.html:209
+msgid "Pan Card"
+msgstr "પાન કાર્ડ"
+
+#: .\template\add_employee.html:160 .\template\add_employee.html:172
+#: .\template\add_intern.html:157 .\template\add_intern.html:169
+#: .\template\update_emp.html:158 .\template\update_emp.html:171
+#: .\template\update_emp.html:212
+msgid "Voter ID"
+msgstr "મતદાર કાર્ડ"
+
+#: .\template\add_employee.html:161 .\template\add_employee.html:173
+#: .\template\add_intern.html:158 .\template\add_intern.html:170
+#: .\template\update_emp.html:159 .\template\update_emp.html:172
+#: .\template\update_emp.html:215
+msgid "License"
+msgstr "લાયસન્સ"
+
+#: .\template\add_employee.html:162 .\template\add_employee.html:174
+#: .\template\add_intern.html:159 .\template\add_intern.html:171
+#: .\template\update_emp.html:160 .\template\update_emp.html:173
+#: .\template\update_emp.html:218
+msgid "Passport"
+msgstr "પાસપોર્ટ"
+
+#: .\template\add_employee.html:167 .\template\add_intern.html:164
+#: .\template\update_emp.html:166
+msgid "Select Document Field 2"
+msgstr "દસ્તાવેજ ફિલ્ડ 2 પસંદ કરો"
+
+#: .\template\add_employee.html:235 .\template\add_intern.html:224
+#: .\template\update_emp.html:249
+msgid "All fields are required"
+msgstr "બધા ક્ષેત્રો જરૂરી છે"
+
+#: .\template\add_employee.html:242 .\template\add_intern.html:231
+#: .\template\update_emp.html:256
+msgid "Invalid email address"
+msgstr "અમાન્ય ઇમેઇલ સરનામું"
+
+#: .\template\add_event.html:8 .\template\add_event.html:166
+msgid "Add Event"
+msgstr "ઈવેન્ટ ઉમેરો"
+
+#: .\template\add_event.html:49
+msgid "Select client"
+msgstr "ગ્રાહક પસંદ કરો"
+
+#: .\template\add_event.html:53 .\template\add_event.html:79
+#: .\template\add_expenses.html:57 .\template\lead_entry.html:71
+#: .\template\update_lead.html:72
+msgid "Other"
+msgstr "અન્ય"
+
+#: .\template\add_event.html:58
+msgid "New Client Name"
+msgstr "નવો ગ્રાહક નામ"
+
+#: .\template\add_event.html:63
+msgid "New Client Number"
+msgstr "નવો ગ્રાહક નંબર"
+
+#: .\template\add_event.html:68
+msgid "New Client Email"
+msgstr "નવો ગ્રાહક ઇમેઇલ"
+
+#: .\template\add_event.html:73 .\template\add_venue.html:33
+#: .\template\all_events.html:28 .\template\aside.html:151
+#: .\template\event_detail.html:38 .\template\lead_detail.html:57
+#: .\template\lead_entry.html:65 .\template\update_event.html:62
+#: .\template\update_lead.html:66
+msgid "Venue"
+msgstr "સ્થળ"
+
+#: .\template\add_event.html:75 .\template\lead_entry.html:67
+#: .\template\update_lead.html:68
+msgid "Select venue"
+msgstr "સ્થળ પસંદ કરો"
+
+#: .\template\add_event.html:84
+msgid "New Venue Name"
+msgstr "નવો સ્થળ નામ"
+
+#: .\template\add_event.html:89
+msgid "New Venue Address"
+msgstr "નવો સ્થળ સરનામું"
+
+#: .\template\add_event.html:94
+msgid "New Venue Capacity"
+msgstr "નવો સ"
+
+
+#: .\template\add_event.html:99 .\template\certificate_form.html:81
+#: .\template\event_detail.html:39 .\template\lead_detail.html:62
+#: .\template\lead_entry.html:91 .\template\update_event.html:70
+#: .\template\update_lead.html:94
+msgid "Start Date"
+msgstr "પ્રારંભ તારીખ"
+
+#: .\template\add_event.html:103 .\template\certificate_form.html:82
+#: .\template\event_detail.html:40 .\template\lead_detail.html:67
+#: .\template\lead_entry.html:96 .\template\update_event.html:74
+#: .\template\update_lead.html:103
+msgid "End Date"
+msgstr "અંત તારીખ"
+
+#: .\template\add_event.html:107 .\template\lead_detail.html:72
+#: .\template\lead_entry.html:101 .\template\update_event.html:80
+#: .\template\update_lead.html:108
+msgid "Type of Event"
+msgstr "ઈવેન્ટનો પ્રકાર"
+
+#: .\template\add_event.html:115 .\template\employee_list.html:29
+#: .\template\employee_list.html:113 .\template\event_detail.html:41
+#: .\template\update_event.html:88
+msgid "Status"
+msgstr "સ્થિતિ"
+
+#: .\template\add_event.html:117
+msgid "Select status"
+msgstr "સ્થિતિ પસંદ કરો"
+
+#: .\template\add_event.html:125 .\template\add_expenses.html:93
+#: .\template\event_detail.html:42 .\template\update_event.html:96
+msgid "Mode of Payment"
+msgstr "ચૂકવણીનો પ્રકાર"
+
+#: .\template\add_event.html:127 .\template\add_event.html:154
+msgid "Select payment mode"
+msgstr "ચૂકવણીનો પ્રકાર પસંદ કરો"
+
+#: .\template\add_event.html:134 .\template\add_expenses.html:79
+#: .\template\event_detail.html:59 .\template\event_detail.html:81
+#: .\template\home.html:64 .\template\update_event.html:107
+msgid "Amount"
+msgstr "રકમ"
+
+#: .\template\add_event.html:139 .\template\event_detail.html:60
+#: .\template\update_event.html:111
+msgid "Discount"
+msgstr "ડિસ્કાઉન્ટ"
+
+#: .\template\add_event.html:144
+msgid "Total Amount"
+msgstr "કુલ રકમ"
+
+#: .\template\add_event.html:148 .\template\lead_entry.html:131
+msgid "Date Of Entry"
+msgstr "દાખલાની તારીખ"
+
+#: .\template\add_event.html:152 .\template\add_expenses.html:85
+#: .\template\event_detail.html:62 .\template\event_detail.html:82
+#: .\template\update_event.html:121
+msgid "Payment Status"
+msgstr "ચૂકવણીની સ્થિતિ"
+
+#: .\template\add_event.html:161 .\template\event_detail.html:63
+#: .\template\update_event.html:129
+msgid "Payment"
+msgstr "ચૂકવણી"
+
+#: .\template\add_expenses.html:8 .\template\add_expenses.html:113
+#: .\template\all_events.html:44
+msgid "Add Expense"
+msgstr "વ્યય ઉમેરો"
+
+#: .\template\add_expenses.html:51
+msgid "Vendor"
+msgstr "વેન્ડર"
+
+
+#: .\template\add_expenses.html:53
+msgid "Select a vendor"
+msgstr "વેન્ડર પસંદ કરો"
+
+#: .\template\add_expenses.html:61 .\template\event_detail.html:78
+msgid "Vendor Name"
+msgstr "વેન્ડરનું નામ"
+
+#: .\template\add_expenses.html:65
+msgid "Organization Name"
+msgstr "સંસ્થાનું નામ"
+
+#: .\template\add_expenses.html:71 .\template\event_detail.html:79
+msgid "Particulars"
+msgstr "વિશેષતાઓ"
+
+#: .\template\add_expenses.html:75 .\template\event_detail.html:80
+msgid "Details"
+msgstr "વિગતો"
+
+#: .\template\add_expenses.html:87
+msgid "Received"
+msgstr "પ્રાપ્ત કર્યું"
+
+#: .\template\add_expenses.html:88
+msgid "Not Received"
+msgstr "મેળવવામાં આવ્યું નથી"
+
+#: .\template\add_expenses.html:89
+msgid "Partial Payment"
+msgstr "ભાગે ચૂકવણી"
+
+#: .\template\add_expenses.html:95
+msgid "Cash"
+msgstr "નગદ"
+
+#: .\template\add_expenses.html:96
+msgid "Cheque"
+msgstr "ચેક"
+
+#: .\template\add_expenses.html:98
+msgid "Not Yet Decided"
+msgstr "હજુ તકનિક નિર્ણય કરેલ નથી"
+
+#: .\template\add_expenses.html:102
+msgid "Payment Made By"
+msgstr "ચૂકવણી કરવામાં આવી છે"
+
+#: .\template\add_intern.html:8 .\template\add_intern.html:200
+msgid "Add Intern"
+msgstr "ઇન્ટર્ન ઉમેરો"
+
+#: .\template\add_intern.html:123
+msgid "End Date Of Intern"
+msgstr "ઇન્ટર્નની અંત તારીખ"
+
+#: .\template\add_intern.html:148
+msgid "Intern"
+msgstr "ઇન્ટર્ન"
+
+#: .\template\add_venue.html:41 .\template\edit_venue.html:17
+#: .\template\employee_list.html:27 .\template\event_detail.html:46
+msgid "Name"
+msgstr "નામ"
+
+#: .\template\add_venue.html:49 .\template\edit_venue.html:25
+#: .\template\venue_list.html:22
+msgid "Capacity"
+msgstr "ક્ષમતા"
+
+#: .\template\all_events.html:9
+msgid "Events"
+msgstr "ઈવેન્ટ્સ"
+
+#: .\template\all_events.html:11
+msgid "Upload File:"
+msgstr "ફાઇલ અપલોડ કરો:"
+
+#: .\template\all_events.html:18 .\template\client_detail.html:12
+msgid "Search by client name"
+msgstr "ક્લાઇન્ટ નામ દ્વારા શોધો"
+
+#: .\template\all_events.html:19 .\template\client_detail.html:13
+#: .\template\employee_list.html:17 .\template\employee_list.html:102
+#: .\template\lead_list.html:13 .\template\venue_list.html:13
+msgid "Search"
+msgstr "શોધો"
+
+#: .\template\all_events.html:26 .\template\event_detail.html:77
+#: .\template\lead_list.html:19 .\template\venue_list.html:19
+msgid "Sr.No"
+msgstr "ક્રમાંક"
+
+
+#: .\template\all_events.html:29
+msgid "Event Start On"
+msgstr "ઈવેન્ટ શરૂ કરો"
+
+#: .\template\all_events.html:30 .\template\client_detail.html:23
+#: .\template\lead_list.html:23 .\template\venue_list.html:23
+msgid "Actions"
+msgstr "ક્રિયાઓ"
+
+#: .\template\all_events.html:42
+msgid "Know more"
+msgstr "વધુ જાણો"
+
+#: .\template\all_events.html:43 .\template\client_detail.html:35
+#: .\template\lead_list.html:46 .\template\update_event.html:134
+msgid "Update"
+msgstr "અપડેટ"
+
+#: .\template\all_events.html:50
+msgid "No events found."
+msgstr "કોઈ ઈવેન્ટ મળ્યો નથી."
+
+#: .\template\aside.html:10
+msgid "Bling Essence"
+msgstr "બ્લિંગ એસન્સ"
+
+#: .\template\aside.html:31 .\template\aside.html:219
+#: .\template\employee_detail.html:12 .\template\profile.html:12
+msgid "Profile"
+msgstr "પ્રોફાઇલ"
+
+#: .\template\aside.html:39 .\template\aside.html:235
+msgid "Logout"
+msgstr "લૉગઆઉટ"
+
+#: .\template\aside.html:53
+msgid "Dashboard"
+msgstr "ડેશબોર્ડ"
+
+#: .\template\aside.html:63
+msgid "Sales"
+msgstr "વેચાણ"
+
+#: .\template\aside.html:71
+msgid "Add Events"
+msgstr "ઈવેન્ટ ઉમેરો"
+
+#: .\template\aside.html:78
+msgid "Upcoming Events"
+msgstr "આગામી ઈવેન્ટ્સ"
+
+#: .\template\aside.html:87
+msgid "Ongoing Events"
+msgstr "ચાલુ ઈવેન્ટ્સ"
+
+#: .\template\aside.html:95
+msgid "All Events"
+msgstr "બધા ઈવેન્ટ્સ"
+
+#: .\template\aside.html:107
+msgid "Lead Entry Module"
+msgstr "લીડ એન્ટ્રી મોડ્યુલ"
+
+#: .\template\aside.html:115
+msgid "Add Leads"
+msgstr "લીડ્સ ઉમેરો"
+
+#: .\template\aside.html:123
+msgid "Funnel Of Leads"
+msgstr "લીડ્સનો ફનેલ"
+
+#: .\template\aside.html:131
+msgid "Converted Leads"
+msgstr "રૂપાંતરિત લીડ્સ"
+
+#: .\template\aside.html:139
+msgid "Cancel Leads"
+msgstr "લીડ્સ રદ કરો"
+
+#: .\template\aside.html:159
+msgid "Add Venue"
+msgstr "સ્થળ ઉમેરો"
+
+#: .\template\aside.html:167 .\template\venue_list.html:8
+msgid "Venue List"
+msgstr "સ્થળ યાદી"
+
+#: .\template\aside.html:179
+msgid "Staff"
+msgstr "સ્ટાફ"
+
+#: .\template\aside.html:187
+msgid "Add Employees"
+msgstr "કર્મચારીઓ ઉમેરો"
+
+#: .\template\aside.html:195
+msgid "Add Interns"
+msgstr "ઇન્ટર્ન્સ ઉમેરો"
+
+#: .\template\aside.html:203
+msgid "Staff List"
+msgstr "સ્ટાફ યાદી"
+
+#: .\template\aside.html:212
+msgid "Account pages"
+msgstr "એકાઉન્ટ પૃષ્ઠો"
+
+#: .\template\aside.html:227
+msgid "Contact"
+msgstr "સંપર્ક"
+
+#: .\template\base.html:10
+msgid "Pages"
+msgstr "પૃષ્ઠો"
+
+#: .\template\certificate_form.html:75
+msgid "Certificate Form"
+msgstr "પ્રમાણપત્ર ફોર્મ"
+
+#: .\template\certificate_form.html:78
+msgid "This is to certify that"
+msgstr "આ પ્રમાણીત કરવામાં આવે છે કે"
+
+#: .\template\certificate_form.html:79
+msgid "Enter your name"
+msgstr "તમારું નામ દાખલ કરો"
+
+#: .\template\certificate_form.html:80
+msgid "Enter your designation"
+msgstr "તમારું નિર્ધારણ દાખલ કરો"
+
+#: .\template\certificate_form.html:83
+msgid "Enter praise"
+msgstr "પ્રશંસા દાખલ કરો"
+
+#: .\template\certificate_form.html:84
+msgid "Generate Certificate"
+msgstr "પ્રમાણપત"
+
+
+#: .\template\client_detail.html:8
+msgid "Clients"
+msgstr "ગ્રાહકો"
+
+#: .\template\client_detail.html:21
+msgid "Phone Number"
+msgstr "ફોન નંબર"
+
+#: .\template\client_detail.html:22 .\template\event_detail.html:49
+msgid "Bookings Count"
+msgstr "બુકિંગ ગણતરી"
+
+#: .\template\client_detail.html:36 .\template\venue_list.html:35
+msgid "Delete"
+msgstr "ડિલીટ"
+
+#: .\template\client_detail.html:42
+msgid "No clients found."
+msgstr "કોઈ ગ્રાહકો મળ્યા નથી."
+
+#: .\template\edit_venue.html:9
+msgid "Edit Venue"
+msgstr "સ્થળ સંપાદિત કરો"
+
+#: .\template\employee_detail.html:22 .\template\profile.html:20
+msgid "Since"
+msgstr "થી"
+
+#: .\template\employee_detail.html:28 .\template\profile.html:26
+msgid "Profile Information"
+msgstr "પ્રોફાઇલ માહિતી"
+
+#: .\template\employee_detail.html:32 .\template\profile.html:31
+msgid "Edit Profile"
+msgstr "પ્રોફાઇલ સંપાદિત કરો"
+
+#: .\template\employee_detail.html:39 .\template\profile.html:38
+msgid "Hi, I’m"
+msgstr "નમસ્તે, હું"
+
+#: .\template\employee_detail.html:39 .\template\profile.html:38
+msgid ""
+"Decisions: If you can’t decide, the answer is no. If two equally difficult "
+"paths, choose the one more painful in the short term (pain avoidance is "
+"creating an illusion of equality)."
+msgstr "નિર્ણય: જો તમે નિર્ણય કરી શકો નથી, તો જવાબ 'ના' છે. જો બે સમાન કઠોર રસ્તાઓ "
+"હોય, તો કોર્ટ સમયમાં તેની વધુ પીડાદાયક એક પસંદ કરો (પીડાની ટાળની "
+"સમાનતાની ભ્રાંતિ બનાવે છે)."
+
+#: .\template\employee_detail.html:43 .\template\profile.html:42
+msgid "Full Name"
+msgstr "પૂરું નામ"
+
+#: .\template\employee_detail.html:44 .\template\profile.html:43
+msgid "Mobile"
+msgstr "મોબાઇલ"
+
+#: .\template\employee_detail.html:46 .\template\profile.html:45
+msgid "Location"
+msgstr "સ્થળ"
+
+#: .\template\employee_detail.html:46 .\template\profile.html:45
+msgid "India"
+msgstr "ભારત"
+
+#: .\template\employee_detail.html:49 .\template\profile.html:48
+msgid "Social"
+msgstr "સામાજિક"
+
+#: .\template\employee_list.html:16
+msgid "Search employees"
+msgstr "કર્મચારીઓ શોધો"
+
+#: .\template\employee_list.html:30
+msgid "Employed"
+msgstr "રોજગારમાં છે"
+
+#: .\template\employee_list.html:76
+msgid "Edit user"
+msgstr "યુઝર સંપાદિત કરો"
+
+#: .\template\employee_list.html:77 .\template\venue_list.html:34
+msgid "Edit"
+msgstr "સંપાદિત કરો"
+
+
+#: .\template\employee_list.html:96
+msgid "Interns"
+msgstr "ઇન્ટર્ન્સ"
+
+#: .\template\employee_list.html:101
+msgid "Search interns"
+msgstr "ઇન્ટર્ન્સ શોધો"
+
+#: .\template\employee_list.html:111
+msgid "Intern Name"
+msgstr "ઇન્ટર્નનું નામ"
+
+#: .\template\employee_list.html:112
+msgid "Inter Designation"
+msgstr "ઇન્ટરનું નિર્દેશન"
+
+#: .\template\employee_list.html:114 .\template\home.html:65
+msgid "Completion"
+msgstr "પૂર્ણતા"
+
+#: .\template\event_detail.html:31
+msgid "Event Detail"
+msgstr "ઈવેન્ટ વિગત"
+
+#: .\template\event_detail.html:36
+msgid "Event Information"
+msgstr "ઈવેન્ટ માહિતી"
+
+#: .\template\event_detail.html:37 .\template\home.html:63
+msgid "Event Type"
+msgstr "ઈવેન્ટ પ્રકાર"
+
+#: .\template\event_detail.html:45
+msgid "Client Information"
+msgstr "ગ્રાહક માહિતી"
+
+#: .\template\event_detail.html:47
+msgid "Number"
+msgstr "નંબર"
+
+#: .\template\event_detail.html:50 .\template\lead_detail.html:92
+#: .\template\lead_entry.html:126 .\template\update_lead.html:132
+msgid "Lead Person"
+msgstr "લીડ વ્યક્તિ"
+
+#: .\template\event_detail.html:56
+msgid "Sales Information"
+msgstr "વેચાણ માહિતી"
+
+#: .\template\event_detail.html:61 .\template\lead_detail.html:97
+#: .\template\update_event.html:115 .\template\update_lead.html:137
+msgid "Date"
+msgstr "તારીખ"
+
+#: .\template\event_detail.html:66
+msgid "No sales data available for this client."
+msgstr "આ ગ્રાહક માટે કોઈ વેચાણ માહિતી ઉપલબ્ધ નથી."
+
+#: .\template\event_detail.html:71
+msgid "Expenses Information"
+msgstr "ખર્ચ માહિતી"
+
+#: .\template\event_detail.html:102
+msgid "No expenses found."
+msgstr "કોઈ ખર્ચ મળ્યો નથી."
+
+#: .\template\footer.html:11
+msgid "made with"
+msgstr "સાથે બનાવ્યું"
+
+#: .\template\footer.html:11
+msgid "by"
+msgstr "દ્વારા"
+
+#: .\template\footer.html:13
+msgid "for"
+msgstr "માટે"
+
+#: .\template\home.html:16
+msgid "Welcome to Bling Square Events,"
+msgstr "Bling Square ઈવેન્ટ્સ પર આપનું સ્વાગત છે,"
+
+#: .\template\home.html:17
+msgid ""
+"Thank you for being a part of our team. Let's make today great and create "
+"memorable events together."
+msgstr ""
+"અમારા ટીમના ભાગ બનાવવા બદલ આભાર. આજેને મહાન બનાવીએ અને એકસાથે યાદગાર "
+"ઈવેન્ટ્સ બનાવીએ."
+
+#: .\template\home.html:21
+msgid "Complete Profile?"
+msgstr "પૂરું પ્રોફાઇલ?"
+
+#: .\template\home.html:46
+msgid "Projects"
+msgstr "પ્રોજેક્ટ્સ"
+
+
+#: .\template\home.html:49
+#, python-format
+msgid "%(completed_events)s done"
+msgid_plural "%(completed_events)s done"
+msgstr[0] "%(completed_events)s પૂર્ણ કર્યું"
+msgstr[1] "%(completed_events)s પૂર્ણ કર્યું"
+
+#: .\template\home.html:49
+msgid "this month"
+msgstr "આ મહિને"
+
+#: .\template\home.html:99
+msgid "Leads Overview"
+msgstr "લીડ્સ સમીક્ષા"
+
+#: .\template\lead_detail.html:8
+msgid "Lead Details"
+msgstr "લીડ વિગતો"
+
+#: .\template\lead_detail.html:47 .\template\lead_entry.html:47
+#: .\template\update_lead.html:47
+msgid "User"
+msgstr "વપરાશકર્તા"
+
+#: .\template\lead_detail.html:52 .\template\lead_entry.html:56
+#: .\template\update_lead.html:57
+msgid "Lead Source"
+msgstr "લીડ સ્રોત"
+
+#: .\template\lead_detail.html:83 .\template\lead_entry.html:116
+#: .\template\update_lead.html:123
+msgid "Enter a 10-digit mobile number"
+msgstr "10-અંકનો મોબાઇલ નંબર દાખલ કરો"
+
+#: .\template\lead_entry.html:8
+msgid "Lead Entry"
+msgstr "લીડ એન્ટ્રી"
+
+#: .\template\lead_entry.html:76 .\template\update_lead.html:79
+#: .\template\venue_list.html:20
+msgid "Venue Name"
+msgstr "સ્થળનું નામ"
+
+#: .\template\lead_entry.html:81 .\template\update_lead.html:84
+msgid "Venue Address"
+msgstr "સ્થળનું સરનામું"
+
+#: .\template\lead_entry.html:86 .\template\update_lead.html:89
+msgid "Venue Capacity"
+msgstr "સ્થળની ક્ષમતા"
+
+#: .\template\lead_entry.html:136
+msgid "Referal"
+msgstr "રફરલ"
+
+#: .\template\lead_entry.html:141
+msgid "Add Lead"
+msgstr "લીડ ઉમેરો"
+
+#: .\template\lead_entry.html:169 .\template\update_lead.html:178
+msgid "Please provide a venue name."
+msgstr "કૃપા કરીને સ્થળનું નામ આપો."
+
+#: .\template\lead_list.html:12
+msgid "Search by message"
+msgstr "સંદેશ દ્વારા શોધો"
+
+#: .\template\lead_list.html:22
+msgid "Created At"
+msgstr "બનાવવામાં"
+
+#: .\template\lead_list.html:38
+msgid "Reject"
+msgstr "અસ્વીકરો"
+
+#: .\template\lead_list.html:47
+msgid "See Details"
+msgstr "વિગતો જુઓ"
+
+#: .\template\lead_list.html:52
+msgid "No leads found."
+msgstr "કોઈ લીડ્સ મળ્યા નથી."
+
+#: .\template\login.html:2
+msgid "es"
+msgstr ""
+
+#: .\template\login.html:7 .\template\login.html:36
+msgid "Bling Square Events"
+msgstr "બ્લિંગ સ્ક્વેર ઈવેન્ટ્સ"
+
+#: .\template\login.html:18 .\template\login.html:21 .\template\login.html:24
+#: .\template\login.html:27 .\template\login.html:30
+msgid " Populate with images "
+msgstr ""
+
+#: .\template\login.html:35
+msgid "logo"
+msgstr ""
+
+#: .\template\login.html:45
+msgid " Email input "
+msgstr ""
+
+
+#: .\template\login.html:50
+msgid " Password input "
+msgstr " પાસવર્ડ ઇનપુટ "
+
+#: .\template\login.html:55
+msgid " Remember me checkbox and Forgot password link "
+msgstr " યાદ રાખો ચેકબોક્સ અને પાસવર્ડ ભૂલી ગયું લિંક "
+
+#: .\template\login.html:60
+msgid "Remember me"
+msgstr "યાદ કરો"
+
+#: .\template\login.html:64
+msgid "Forgot password?"
+msgstr "પાસવર્ડ ભૂલી ગયું?"
+
+#: .\template\login.html:68
+msgid " Submit button "
+msgstr " સબમિટ બટન "
+
+#: .\template\login.html:69
+msgid "Sign in"
+msgstr "સાઇન ઇન"
+
+#: .\template\login.html:123 .\template\login.html:149
+#: .\template\login.html:175 .\template\login.html:200
+#: .\template\login.html:223 .\template\login.html:246
+msgid "Image"
+msgstr "ચિત્ર"
+
+#: .\template\update_emp.html:8
+msgid "Update Employee"
+msgstr "કર્મચારીને અપડેટ કરો"
+
+#: .\template\update_emp.html:114
+msgid "Your Photo"
+msgstr "તમારો ફોટો"
+
+#: .\template\update_emp.html:203
+msgid "Documents of"
+msgstr "દસ્તાવેજનું"
+
+#: .\template\update_event.html:9
+msgid "Update Event"
+msgstr "ઈવેન્ટ અપડેટ કરો"
+
+#: .\template\update_lead.html:8 .\template\update_lead.html:150
+msgid "Update Lead"
+msgstr "લીડ અપડેટ કરો"
+
+#: .\template\venue_list.html:12
+msgid "Search by venue name"
+msgstr "સ્થળનું નામ દ્વારા શોધો"
+
+#: .\template\venue_list.html:40
+msgid "No venues found."
+msgstr "કોઈ સ્થળો મળ્યા નથી."

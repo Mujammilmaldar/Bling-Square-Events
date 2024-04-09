@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Preview</title>
+    {% load i18n %}
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f6f6f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 70%;
+            text-align: center;
+        }
+
+        .certificate {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+
+        .certificate h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #428bca;
+        }
+
+        .certificate .details {
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .certificate .details p {
+            margin: 10px 0;
+        }
+
+        .certificate .signature {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .certificate .signature img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .certificate .personal-note {
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+
+        .certificate textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .certificate button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 40px;
+            background-color: #428bca;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .certificate button:hover {
+            background-color: #357ebd;
+        }
+
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 50%;
+            padding-bottom: 10px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: none;
+            border-bottom: 2px solid #428bca;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="certificate">
+        <h1>Certificate of Internship Completion</h1>
+        <div class="details">
+            <p>This is to certify that</p>
+            <p>{{ intern_name }}</p>
+            <p>has successfully completed an internship with Bling Square Events in the
+                capacity of {{ designation }} Intern.</p>
+            <p>Duration of Internship: {{ start_date }} , to {{ end_date }} , 2024</p>
+        </div>
+        <!-- <div class="signature"> -->
+            <!-- <img src="signature_image.png" alt="Signature Image"> -->
+            <div class="personal-note">
+                <p>During this period, "{{ intern_name }}" {{ praise }}</p>
+                <!-- <button>Save Note</button> -->
+            </div>
+        </div>
+        <p> {{today_date}} </p>
+    </div>
+</div>
+
+</body>
+</html>

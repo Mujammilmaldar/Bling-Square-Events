@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{% trans 'Lead Details' %}</h5>
+                <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <style>
+                        /* Custom CSS for label alignment */
+                        .form-label {
+                            display: inline-block;
+                            width: 100%;
+                            text-align: left;
+                            margin-right: 20px;
+                        }
+
+                        /* Custom CSS for input alignment */
+                        .form-control {
+                            width:100%;
+                        }
+
+                        /* Custom CSS for buttons */
+                        .btn-primary {
+                            background-color: #D79865;
+                            color: #582C4F;
+                            border-color: #D79865;
+                            font-weight: bold;
+                            border-radius: 10px;
+                            padding: 6px 12px;
+                            transition: all 0.3s ease;
+                        }
+                        .col-md-4 input, .col-md-4 select {
+                            padding: 6px;
+                            border: 0.02px solid rgba(0, 0, 0, 0.37);
+                        }
+                        .btn-primary:hover {
+                            background-color: #b67745;
+                            border-color: #b67745;
+                            color: #fff;
+                        }
+                    </style>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="user" class="form-label fw-bold">{% trans 'User' %}</label>
+                            <input type="text" name="user" id="user" class="form-control" value="{{ lead.user }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="source" class="form-label fw-bold">{% trans 'Lead Source' %}</label>
+                            <input type="text" name="source" id="source" class="form-control" value="{{ lead.source }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="venue" class="form-label fw-bold">{% trans 'Venue' %}</label>
+                            <input type="text" name="venue_existing" id="venue" class="form-control" value="{{ lead.event.venue }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="start_date" class="form-label fw-bold">{% trans 'Start Date' %}</label>
+                            <input type="text" name="start_date" id="start_date" class="form-control" value="{{ lead.event.start_date|date:'Y-m-d' }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="end_date" class="form-label fw-bold">{% trans 'End Date' %}</label>
+                            <input type="text" name="end_date" id="end_date" class="form-control" value="{{ lead.event.end_date|date:'Y-m-d' }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="type_of_event" class="form-label fw-bold">{% trans 'Type of Event' %}</label>
+                            <input type="text" name="type_of_event" id="type_of_event" class="form-control" value="{{ lead.event.type_of_event }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="client_name" class="form-label fw-bold">{% trans 'Client Name' %}</label>
+                            <input type="text" name="client_name" id="client_name" class="form-control" value="{{ lead.client.name }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="client_number" class="form-label fw-bold">{% trans 'Client Number' %}</label>
+                            <input type="text" name="client_number" id="client_number" class="form-control" pattern="[0-9]{10}" title="{% trans 'Enter a 10-digit mobile number' %}" value="{{ lead.client.number }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="client_email" class="form-label fw-bold">{% trans 'Client Email' %}</label>
+                            <input type="email" name="client_email" id="client_email" class="form-control" value="{{ lead.client.email }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3 display-hidden" style="display: none;">
+                            <label for="leadperson" class="form-label fw-bold">{% trans 'Lead Person' %}</label>
+                            <input type="checkbox" name="leadperson" id="leadperson" class="form-check-input" value="True" {% if lead.leadperson %}checked{% endif %} disabled>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="date" class="form-label fw-bold">{% trans 'Date' %}</label>
+                            <input type="text" name="date" id="date" class="form-control" value="{{ lead.sales.date|date:'Y-m-d' }}" readonly>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="referral" class="form-label fw-bold">{% trans 'Referral' %}</label>
+                            <input name="referral" id="referral" class="form-control" value="{{ lead.sales.referral }}" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-3">
+                        <!-- No need for a submit button as the form is read-only -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

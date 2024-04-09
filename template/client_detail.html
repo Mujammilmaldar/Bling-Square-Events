@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main %}
+<main id="main" class="main">
+    <div class="container">
+        <div class="card recent-sales overflow-auto">
+            <div class="card-body">
+                <h5 class="card-title">{% trans "Clients" %}</h5>
+                <form method="get" class="mb-3">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="{% trans "Search by client name" %}" value="{{ search_query }}">
+                        <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
+                    </div>
+                </form>
+                <table class="table table-borderless datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">{% trans "Client Name" %}</th>
+                            <th scope="col">{% trans "Email" %}</th>
+                            <th scope="col">{% trans "Phone Number" %}</th>
+                            <th scope="col">{% trans "Bookings Count" %}</th>
+                            <th scope="col">{% trans "Actions" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for client in clients %}
+                        {% if not client.leadperson %}
+                        <tr>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.email }}</td>
+                            <td>{{ client.number }}</td>
+                            <td>{{ client.bookings_count }}</td>
+                            <td>
+                                <a href="/update_client/{{ client.id }}" class="btn btn-primary">{% trans "Update" %}</a>
+                                <a href="/delete_client/{{ client.id }}" class="btn btn-danger">{% trans "Delete" %}</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% empty %}
+                        <tr>
+                            <td colspan="5">{% trans "No clients found." %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    {% load i18n %}
+    <!-- <link rel="stylesheet" href="main.css"> -->
+</head>
+<style>
+/* Reset and base styles */
+/* Reset and base styles */
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html, body {
+    background: #f5f5f5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card styling */
+.front, .back {
+    margin-right: 50px; /* Adjust for the front card */
+    height: 350px;
+    width: 280px;
+    display: flex;
+    border-radius: 22px;
+    overflow: hidden;
+    color: #3b1c35;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+/* Specific background for the back */
+.back {
+    background: #ffac4c7a; /* Unique background for the back */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Styling for the aside section */
+.aside {
+    background: #ffac4c7a;
+    height: 100%;
+    width: 30%;
+}
+
+/* Main content styling */
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%; /* Adjusted to 70% to fit the provided structure */
+}
+
+/* Upper section styling */
+.upper {
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 22px; /* Adjusted margin */
+}
+
+/* Styling for paragraphs (designation) */
+p {
+    font-size: 14px;
+}
+
+/* Employee name styling */
+.empname {
+    margin-left: 8px;
+    text-transform: uppercase;
+}
+
+/* Lower section styling */
+.down {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.down img {
+    width: 50%;
+    margin-left: -50px; /* Adjusted margin for alignment */
+}
+
+</style>
+<body>
+    <div class="front">
+        <div class="aside"></div>
+        <div class="main">
+            <div class="upper">
+                <div class="top">
+                    <h2 class="empname" style="text-transform: uppercase;">{{ current_user.first_name }} {{ current_user.last_name }}</h2>
+                    <p>{{ current_user.designation }}</p>
+                </div>
+            </div>
+            <div class="down">
+                <!-- <img src="{% static '/assets/images/logo2.png' %}" alt="logo"> -->
+                <h2 style="text-transform: uppercase; font-weight: 500; margin-left: -20px; font-size: 20px;">Bling Square Events</h2>
+            </div>
+        </div>
+    </div>
+    <div class="back">
+        <img src="" alt="qr code">
+    </div>
+</body>
+</html>

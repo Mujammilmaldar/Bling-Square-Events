@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{% trans "Add Expense" %}</h5>
+                <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <style>
+                        /* Custom CSS for label alignment */
+                        .form-label {
+                            display: inline-block;
+                            width: 100%;
+                            text-align: left;
+                            margin-right: 20px;
+                        }
+
+                        /* Custom CSS for input alignment */
+                        .form-control {
+                            width: 100%;
+                            padding: 6px;
+                            border: 0.02px solid rgba(0, 0, 0, 0.37);
+                        }
+
+                        /* Custom CSS for buttons */
+                        .btn-primary {
+                            background-color: #D79865;
+                            color: #582C4F;
+                            border-color: #D79865;
+                            font-weight: bold;
+                            border-radius: 10px;
+                            padding: 6px 12px;
+                            transition: all 0.3s ease;
+                        }
+
+                        .btn-primary:hover {
+                            background-color: #b67745;
+                            border-color: #b67745;
+                            color: #fff;
+                        }
+
+                        /* Custom CSS to hide/show additional input fields */
+                        .hidden {
+                            display: none;
+                        }
+                    </style>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="vendor" class="form-label fw-bold">{% trans "Vendor" %}</label>
+                            <select name="vendor" id="vendor" class="form-control" onchange="showHideFields()">
+                                <option value="" selected disabled>{% trans "Select a vendor" %}</option>
+                                {% for vendor in vendors %}
+                                    <option value="{{ vendor.id }}">{{ vendor.name }}</option>
+                                {% endfor %}
+                                <option value="other">{% trans "Other" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3 hidden" id="otherVendorNameFields">
+                            <label for="vendor_name" class="form-label fw-bold">{% trans "Vendor Name" %}</label>
+                            <input type="text" name="vendor_name" id="vendor_name" class="form-control">
+                        </div>
+                        <div class="col-md-4 mb-3 hidden" id="otherOrganizationNameFields">
+                            <label for="organization_name" class="form-label fw-bold">{% trans "Organization Name" %}</label>
+                            <input type="text" name="organization_name" id="organization_name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="particulars" class="form-label fw-bold">{% trans "Particulars" %}</label>
+                            <input type="text" name="particulars" id="particulars" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="details" class="form-label fw-bold">{% trans "Details" %}</label>
+                            <input name="details" id="details" class="form-control">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="amount" class="form-label fw-bold">{% trans "Amount" %}</label>
+                            <input type="number" name="amount" id="amount" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="payment_status" class="form-label fw-bold">{% trans "Payment Status" %}</label>
+                            <select name="payment_status" id="payment_status" class="form-control">
+                                <option value="received">{% trans "Received" %}</option>
+                                <option value="not_received">{% trans "Not Received" %}</option>
+                                <option value="partial_payment">{% trans "Partial Payment" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="mode_of_payment" class="form-label fw-bold">{% trans "Mode of Payment" %}</label>
+                            <select name="mode_of_payment" id="mode_of_payment" class="form-control">
+                                <option value="cash">{% trans "Cash" %}</option>
+                                <option value="cheque">{% trans "Cheque" %}</option>
+                                <option value="online">{% trans "Online" %}</option>
+                                <option value="not_yet_decided">{% trans "Not Yet Decided" %}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="payment_made_by" class="form-label fw-bold">{% trans "Payment Made By" %}</label>
+                            <input type="text" name="payment_made_by" id="payment_made_by" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="photo" class="form-label fw-bold">{% trans "Photo" %}</label>
+                            <input type="file" name="photo" id="photo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">{% trans "Add Expense" %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    function showHideFields() {
+        var vendorSelect = document.getElementById("vendor");
+        var otherVendorNameFields = document.getElementById("otherVendorNameFields");
+        var otherOrganizationNameFields = document.getElementById("otherOrganizationNameFields");
+
+        if (vendorSelect.value === "other") {
+            otherVendorNameFields.classList.remove("hidden");
+            otherOrganizationNameFields.classList.remove("hidden");
+        } else {
+            otherVendorNameFields.classList.add("hidden");
+            otherOrganizationNameFields.classList.add("hidden");
+        }
+    }
+</script>
+{% endblock %}

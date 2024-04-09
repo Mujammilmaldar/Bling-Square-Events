@@ -1,0 +1,35 @@
+{% load static %}
+{% load i18n %}
+<footer class="footer py-4">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6 mb-lg-0 mb-4">
+          <div class="copyright text-center text-sm text-muted text-lg-start">
+            © <script>
+              document.write(new Date().getFullYear())
+            </script>,
+            {% trans "made with" %} <i class="fa fa-heart"></i> {% trans "by" %}
+            <a href="https://www.github.com/Mujammilmaldar" class="font-weight-bold" target="_blank">Mujammil Maldar</a>
+            {% trans "for" %} Bling Square Events.
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <!-- Other footer content goes here -->
+          <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="{% static '/assets/js/core/popper.min.js' %}"></script>
+  <script src="{% static '/assets/js/core/bootstrap.min.js' %}"></script>
+  <script src="{% static '/assets/js/plugins/perfect-scrollbar.min.js' %}"></script>
+  <script src="{% static '/assets/js/plugins/smooth-scrollbar.min.js' %}"></script>
+  <script src="{% static '/assets/js/plugins/chartjs.min.js' %}"></script>
+  <!-- github btn  -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="{% static '/assets/js/material-dashboard.min.js' %}"></script>
+  </body>
+  
+  </html>
+  

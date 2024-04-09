@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg " style="text-transform: capitalize;">
+    <div class="container mt-4">
+        <div class="card recent-sales overflow-auto">
+            <div class="card-body">
+                <h5 class="card-title text-center">{% trans "Events" %}</h5>
+                <!-- <form action="/All_Sales" method="post" enctype="multipart/form-data">
+                    <label for="file">{% trans "Upload File:" %}</label>
+                    <input type="file" id="file" name="file">
+                    <button type="submit">{% trans "Submit" %}</button>
+                </form> -->
+                <form method="get" class="mb-3">
+                    {% csrf_token %}
+                    <div class="input-group ">
+                        <input type="text" class="form-control" name="q" placeholder="{% trans "Search by client name" %}" value="{{ search_query }}">
+                        <button type="submit" class="btn btn-primary">{% trans "Search" %}</button>
+                    </div>
+                    <hr style="height: 1.5px; background: #000;">
+                </form>
+                <table class="table table-borderless datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">{% trans "Sr.No" %}</th>
+                            <th scope="col">{% trans "Client" %}</th>
+                            <th scope="col">{% trans "Venue" %}</th>
+                            <th scope="col">{% trans "Event Start On" %}</th>
+                            <th scope="col">{% trans "Actions" %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in events %}
+                        {% if event.client.leadperson == False %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ event.client.name }}</td>
+                            <td>{{ event.venue }}</td>
+                            <td>{{ event.start_date }}</td>
+                            <td>
+                                <a href="/event_detail/{{event.id}}/" class="btn btn-primary p-1" style="margin-right: 13px;">{% trans "Know more" %}</a>
+                                <a href="/update_event/{{event.id}}" class="btn btn-primary p-1" style="margin-right: 13px;">{% trans "Update" %}</a>
+                                <a href="/add_expense/{{event.id}}" class="btn btn-primary p-1">{% trans "Add Expense" %}</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% empty %}
+                        <tr>
+                            <td colspan="5">{% trans "No events found." %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

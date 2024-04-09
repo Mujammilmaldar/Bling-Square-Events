@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <div class="container-fluid py-4">
+        <div class="card recent-sales overflow-auto">
+            <div class="card-body">
+                <h5 class="card-title">{% trans 'Venue List' %}</h5>
+                <form method="get" class="mb-3">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" placeholder="{% trans 'Search by venue name' %}" value="{{ search_query }}">
+                        <button type="submit" class="btn btn-primary">{% trans 'Search' %}</button>
+                    </div>
+                </form>
+                <table class="table table-borderless datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">{% trans 'Sr.No' %}</th>
+                            <th scope="col">{% trans 'Venue Name' %}</th>
+                            <th scope="col">{% trans 'Address' %}</th>
+                            <th scope="col">{% trans 'Capacity' %}</th>
+                            <th scope="col">{% trans 'Actions' %}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for venue in venues %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ venue.name }}</td>
+                            <td>{{ venue.address }}</td>
+                            <td>{{ venue.capacity }}</td>
+                            <td>
+                                <a href="/edit_venue/{{venue.id}}" class="btn btn-info p-1">{% trans 'Edit' %}</a>
+                                <a href="/delete_venue/{{venue.id}}" class="btn btn-danger p-1">{% trans 'Delete' %}</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5">{% trans 'No venues found.' %}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}
+
+<script>
+    // Add any JavaScript logic here
+</script>

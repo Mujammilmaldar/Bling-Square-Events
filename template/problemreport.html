@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container-fluid py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-gradient-primary py-3">
+                        <h5 class="text-white mb-0">Report a Problem</h5>
+                    </div>
+                    <div class="card-body">
+                        {% if success %}
+                            <div class="alert alert-info">{{ success }}</div>
+                        {% endif %}
+                        <form method="post" class="mt-4">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="id_summary" class="form-label">Summary</label>
+                                <input type="text" name="summary" id="id_summary" class="form-control" value="{{ form.summary.value }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_details" class="form-label">Details</label>
+                                <textarea name="details" id="id_details" class="form-control" readonly>{{ form.details.value }}</textarea>
+                            </div>
+                            <div class="mb-3">
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

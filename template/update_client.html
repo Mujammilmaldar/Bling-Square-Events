@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+<!-- update_client.html -->
+
+{% block main %}
+<head>
+  <style>
+    .row {
+      margin-bottom: 1rem;
+    }
+    .col-md-3 {
+      max-width: 50%; /* Adjust as needed */
+    } 
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      color: #ffffff; 
+      outline: none;
+    }
+    select {
+      background: transparent;
+      outline: none;
+      border: none;
+      color: rgb(255, 255, 255);
+    }
+    textarea{
+      width: 80%;
+      color: white;
+      background: transparent;
+    }
+    button{
+      background: #D79865;
+      color: #582C4F;
+      padding: 6px 12px;
+      font-weight: 700;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      width: 30%;
+      transition: all ease linear 2s;
+    }
+    button:hover{
+      background: #b67745;
+      transition: all ease linear 5s;
+    }
+  </style>
+</head>
+<main id="main" class="main">
+  <div class="container">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Client Details</h5>
+          <!-- Display your form here -->
+          <form method="post" id="myform">
+            {% csrf_token %}
+            {% for field in client_form %}
+            <div class="mb-3 row">
+              <label for="{{ field.id_for_label }}" class="col-md-4 col-form-label">{{ field.label }}</label>
+              <div class="col-md-8">
+                {{ field }}
+              </div>
+            </div>
+            {% endfor %}
+            <div class="text-center mt-4">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main %}

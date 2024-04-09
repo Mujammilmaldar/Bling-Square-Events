@@ -1,0 +1,27 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+</head>
+<body>
+    <h1>Settings</h1>
+    
+    <!-- Profile settings -->
+    <h2>Profile</h2>
+    <p>Add profile settings form here...</p>
+    
+    <!-- Language selection -->
+    <h2>Language</h2>
+    <p>Add language selection options here...</p>
+    
+    <!-- Logout option -->
+    <h2>Logout</h2>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

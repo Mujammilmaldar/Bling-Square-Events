@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">{% trans name %}</h6>
+                        </div>
+                        <form method="get" class="mt-3 ml-3" style="width: 90%;margin-left: 12px;border-bottom: 2px solid black;">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q" placeholder="{% trans 'Search employees' %}" value="{{ search_query }}">
+                                <button type="submit" class="btn btn-primary">{% trans 'Search' %}</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans name %} {% trans 'Name' %}</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{% trans 'Designation' %}</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans 'Status' %}</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans 'Employed' %}</th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for employee in employees %}
+                                    
+                                    {% if employee.id != request.user.id %}
+                                    
+                                    {% if employee.category != 'intern' %}
+                                    
+                                    
+                                    
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div>
+                                                    
+                                                    {% if employee.photo %}  
+                                                    <img src="{{employee.photo.url}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                    {% endif %}
+                                                        
+                                                </div>
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm"> {{employee.first_name}} {{employee.last_name}} </h6>
+                                                    <p class="text-xs text-secondary mb-0"> {{employee.email}} </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0"> {{employee.designation}} </p>
+                                            <p class="text-xs text-secondary mb-0"> {{employee.role}} </p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            
+                                            {% if employee.active == True %}
+                                            <span class="badge badge-sm bg-gradient-success">  </span>
+                                            {% else %}
+                                            <span class="badge badge-sm bg-gradient-danger">  </span>
+                                            {% endif %}
+                                                
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold"> {{employee.joiningdate}} </span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="/Update_Employee/{{employee.id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="{% trans 'Edit user' %}">
+                                                {% trans 'Edit' %}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">{% trans 'Interns' %}</h6>
+                        </div>
+                        <form method="get" class="mt-3 ml-3" style="width: 90%;margin-left: 12px;border-bottom: 2px solid black;">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="q2" placeholder="{% trans 'Search interns' %}" value="{{ search_query2 }}">
+                                <button type="submit" class="btn btn-primary">{% trans 'Search' %}</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center justify-content-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans 'Intern Name' %}</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{% trans 'Inter Designation' %}</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{% trans 'Status' %}</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{% trans 'Completion' %}</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for interns in employee %}
+                                    {% if interns.id != request.user.id and interns.category == 'intern' %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2">
+                                                    <div>
+                                                        {% if interns.photo %}  
+                                                            <img src="{{interns.photo.url}}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="my-auto">
+                                                        <h6 class="mb-0 text-sm">{{interns.first_name}}</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-sm font-weight-bold mb-0"> {{interns.designation}} </p>
+                                            </td>
+                                            <td>
+                                                <span class="text-xs font-weight-bold"> {% if interns.active == True %}
+                                                    <span class="badge badge-sm bg-gradient-success">  </span>
+                                                    {% else %}
+                                                    <span class="badge badge-sm bg-gradient-danger">  </span>
+                                                    {% endif %} </span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <span class="me-2 text-xs font-weight-bold">60%</span>
+                                                    <div>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle">
+                                                <button class="btn btn-link text-secondary mb-0">
+                                                    <i class="fa fa-ellipsis-v text-xs"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

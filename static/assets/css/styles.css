@@ -1,0 +1,85 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;  
+}
+
+.container2 {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.column {
+  flex: 1;
+  overflow-y: hidden;
+  overflow: hidden;
+}
+
+img {
+  width: 250px;
+  height: auto;
+  padding: 15px;
+  border-radius: 20px;  
+}
+
+.rounded-image {
+  border-radius: 30px; /* Rounded border */
+}
+
+@media (max-width: 890px) {
+  .rounded-image {
+      width: 180px; /* Set width to 150px for smaller screens */
+  }
+}
+
+.login-center {
+  position: fixed; /* Ensure it stays fixed */
+  width: 30%;
+  top: 50%; /* Position from the top */
+  left: 50%; /* Position from the left */
+  transform: translate(-50%, -50%); /* Center the div both horizontally and vertically */
+  background-color: #fff; /* Example background color with transparency */
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1; /* Ensure it's above other content */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.imglogo {
+  width: 80%;
+  margin-left: 30px; /* Adjust as needed */
+}
+
+.login-center h2 {
+  font-weight: 900;
+  font-style: italic;
+}
+
+.logo {
+  height: 100%; /* Take up 100% of login-center height */
+}
+
+.login-form {
+  width: 100%; /* Ensure form takes up 100% width by default */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .login-center {
+    width: 80%; /* Adjust width to 80% on smaller screens */
+  }
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #B68D4A !important; /* Change this to your desired color */
+}
+
+  .form-control:focus {
+    outline-color: #582C4F; /* Change this to your desired color */
+    /* Optionally, you can also change other outline properties like width or style */
+    outline-width: 2px; 
+    outline-style: solid;
+    box-shadow: none;
+}

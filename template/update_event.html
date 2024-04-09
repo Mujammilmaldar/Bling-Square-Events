@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+<!-- update_event.html -->
+{% load i18n %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{% trans 'Update Event' %}</h5>
+                <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <style>
+                        /* Custom CSS for label alignment */
+                        .form-label {
+                            display: inline-block;
+                            width: 100%; /* Adjust width as needed */
+                            text-align: left;
+                            margin-right: 20px; /* Add some space between label and input */
+                        }
+
+                        /* Custom CSS for input alignment */
+                        .form-control {
+                            width:100%; /* Adjust width to fit the remaining space */
+                        }
+
+                        /* Custom CSS for buttons */
+                        .btn-primary {
+                            background-color: #D79865;
+                            color: #582C4F;
+                            border-color: #D79865;
+                            font-weight: bold;
+                            border-radius: 10px;
+                            padding: 6px 12px;
+                            transition: all 0.3s ease;
+                        }
+                        .col-md-4 input,.col-md-4 select{
+                            padding: 6px;
+                            border: 0.02px solid rgba(0, 0, 0, 0.37);
+                        }
+                        .btn-primary:hover {
+                            background-color: #b67745;
+                            border-color: #b67745;
+                            color: #fff;
+                        }
+                    </style>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="new_client_name" class="form-label fw-bold">{% trans 'Client Name' %}</label>
+                            <input type="text" name="client_name" id="new_client_name" class="form-control" value="{{ event.client.name }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="new_client_number" class="form-label fw-bold">{% trans 'Client Number' %}</label>
+                            <input type="text" name="client_number" id="new_client_number" class="form-control" value="{{ client.number }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="new_client_email" class="form-label fw-bold">{% trans 'Client Email' %}</label>
+                            <input type="email" name="client_email" id="new_client_email" class="form-control" value="{{client.email }}">
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="venue" class="form-label fw-bold">{% trans 'Venue' %}</label>
+                            <select name="venue" id="venue" class="form-control">
+                                {% for venue in venues %}
+                                    <option value="{{ venue.name }}" {% if event.venue_id == venue.id %} selected {% endif %}>{{ venue.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="start_date" class="form-label fw-bold">{% trans 'Start Date' %}</label>
+                            <input type="date" name="start_date" id="start_date" class="form-control" value="{% if event.start_date %}{{ event.start_date | date:'Y-m-d' }}{% endif %}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="end_date" class="form-label fw-bold">{% trans 'End Date' %}</label>
+                            <input type="date" name="end_date" id="end_date" class="form-control" value="{% if event.end_date %}{{ event.end_date | date:'Y-m-d' }}{% endif %}">
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="type_of_event" class="form-label fw-bold">{% trans 'Type of Event' %}</label>
+                            <select name="type_of_event" id="type_of_event" class="form-control">
+                                {% for type, label in event.TYPE_OF_EVENT_CHOICES %}
+                                    <option value="{{ type }}" {% if event.type_of_event == type %} selected {% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="status" class="form-label fw-bold">{% trans 'Status' %}</label>
+                            <select name="status" id="status" class="form-control">
+                                {% for status, label in event.STATUS_CHOICES %}
+                                    <option value="{{ status }}" {% if event.status == status %} selected {% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="mode_of_payment" class="form-label fw-bold">{% trans 'Mode of Payment' %}</label>
+                            <select name="mode_of_payment" id="mode_of_payment" class="form-control">
+                                {% for payment, label in event.PAYMENT_CHOICES %}
+                                    <option value="{{ payment }}" {% if event.mode_of_payment == payment %} selected {% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Add sales fields -->
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="amount" class="form-label fw-bold">{% trans 'Amount' %}</label>
+                            <input type="number" name="amount" id="amount" class="form-control" value="{{ sales.amount }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="discount" class="form-label fw-bold">{% trans 'Discount' %}</label>
+                            <input type="number" name="discount" id="discount" class="form-control" value="{{ sales.discount }}">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="date" class="form-label fw-bold">{% trans 'Date' %}</label>
+                            <input type="date" name="date" id="date" class="form-control" value="{{ sales.date|date:'Y-m-d' }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="payment_status" class="form-label fw-bold">{% trans 'Payment Status' %}</label>
+                            <select name="payment_status" id="payment_status" class="form-control">
+                                {% for payment_status, label in sales.PAYMENT_STATUS %}
+                                    <option value="{{ payment_status }}" {% if sales.payment_status == payment_status %} selected {% endif %}>{{ label }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="payment" class="form-label fw-bold">{% trans 'Payment' %}</label>
+                            <input type="text" name="payment" id="payment" class="form-control" value="{{ sales.payment }}">
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">{% trans 'Update' %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock main %}

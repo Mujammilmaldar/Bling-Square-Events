@@ -1,0 +1,90 @@
+<div class="fixed-plugin">
+  <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+    <i class="material-icons py-2">settings</i>
+  </a>
+  <div class="card shadow-lg">
+    <div class="card-header pb-0 pt-3">
+      <div class="float-start">
+        <h5 class="mt-3 mb-0">Bling Square Events</h5>
+        <p>See our dashboard options.</p>
+      </div>
+      <div class="float-end mt-4">
+        <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+          <i class="material-icons">clear</i>
+        </button>
+      </div>
+      <!-- End Toggle Button -->
+    </div>
+    <hr class="horizontal dark my-1">
+    <div class="card-body pt-sm-3 pt-0">
+      <!-- Sidebar Backgrounds -->
+      
+      <!-- Sidenav Type
+      <div class="d-flex">
+        <button class="btn bg-gradient-dark px-3 mb-2 {% if sidenav_type == 'bg-gradient-dark' %}active{% endif %}" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2 {% if sidenav_type == 'bg-transparent' %}active{% endif %}" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+        <button class="btn bg-gradient-dark px-3 mb-2 ms-2 {% if sidenav_type == 'bg-white' %}active{% endif %}" data-class="bg-white" onclick="sidebarType(this)">White</button>
+      </div> -->
+
+      <div class="mt-2 d-flex">
+        <h6 class="mb-0">Light / Dark</h6>
+        <div class="form-check form-switch ps-0 ms-auto my-auto">
+          <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" {% if request.session.theme == 'dark' %}checked{% endif %}>
+        </div>
+        
+      </div>
+      <hr class="horizontal dark my-1">
+     <form method="post" action="{% url 'change_language' %}" class="mt-2">
+  {% csrf_token %}
+  <label for="language">Select Language:</label>
+  <select name="language" id="language">
+    <option value="en" {% if request.user.userlanguage.language == 'en' %}selected{% endif %}>English</option>
+    <option value="hi" {% if request.user.userlanguage.language == 'hi' %}selected{% endif %}>Hindi</option>
+    <option value="mr" {% if request.user.userlanguage.language == 'mr' %}selected{% endif %}>Marathi</option>
+    <option value="gu" {% if request.user.userlanguage.language == 'gu' %}selected{% endif %}>Gujarati</option>
+    <!-- Add more language options as needed -->
+  </select>
+  <button type="submit">Change Language</button>
+</form>
+    </div>
+  </div>
+</div>
+<input type="checkbox" id="theme-toggle" {% if request.session.theme == 'dark' %}checked{% endif %}>
+<!-- Include this code where you want the theme toggle checkbox to appear -->
+
+<!-- Add the following JavaScript to handle the theme toggle -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const themeToggle = document.getElementById('dark-version');
+  
+  themeToggle.addEventListener('change', function() {
+      const selectedTheme = this.checked ? 'dark' : 'light';
+      
+      // Send a POST request to change the theme
+      fetch('/change-theme/', {
+          method: 'POST',
+          headers: {
+              'X-CSRFToken': '{{ csrf_token }}', // Include the CSRF token
+              'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'theme=' + selectedTheme,
+      })
+      .then(response => {
+          if (response.ok) {
+              // Theme successfully changed, reload the page to reflect the new theme
+              window.location.reload();
+          } else {
+              console.error('Failed to change theme');
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+  });
+
+  // If dark mode is already enabled, trigger the darkMode function
+  if (themeToggle.checked && typeof darkMode === 'function') {
+      darkMode(themeToggle);
+  }
+});
+</script>

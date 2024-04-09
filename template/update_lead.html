@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block main %}
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{% trans 'Update Lead' %}</h5>
+                <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    <style>
+                        /* Custom CSS for label alignment */
+                        .form-label {
+                            display: inline-block;
+                            width: 100%;
+                            text-align: left;
+                            margin-right: 20px;
+                        }
+
+                        /* Custom CSS for input alignment */
+                        .form-control {
+                            width:100%;
+                        }
+
+                        /* Custom CSS for buttons */
+                        .btn-primary {
+                            background-color: #D79865;
+                            color: #582C4F;
+                            border-color: #D79865;
+                            font-weight: bold;
+                            border-radius: 10px;
+                            padding: 6px 12px;
+                            transition: all 0.3s ease;
+                        }
+                        .col-md-4 input, .col-md-4 select {
+                            padding: 6px;
+                            border: 0.02px solid rgba(0, 0, 0, 0.37);
+                        }
+                        .btn-primary:hover {
+                            background-color: #b67745;
+                            border-color: #b67745;
+                            color: #fff;
+                        }
+                    </style>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="user" class="form-label fw-bold">{% trans 'User' %}</label>
+                            <select name="user" id="user" class="form-control">
+                                {% for choice in user_choices %}
+                                    <option value="{{ choice.0 }}" {% if choice.0 == lead.user.id %} selected {% endif %}>{{ choice.1 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+
+<div class="col-md-4 mb-3">
+    <label for="source" class="form-label fw-bold">{% trans 'Lead Source' %}</label>
+    <select name="source" id="source" class="form-control">
+        {% for choice in source_choices %}
+            <option value="{{ choice.0 }}" {% if choice.0 == lead.source %} selected {% endif %}>{{ choice.1 }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="venue" class="form-label fw-bold">{% trans 'Venue' %}</label>
+    <select name="venue_existing" id="venue" class="form-control" onchange="showHideVenueFields()">
+        <option value="" selected disabled>{% trans 'Select venue' %}</option>
+        {% for venue in venues %}
+            <option value="{{ venue.id }}" {% if venue.id == lead.event.venue.id %} selected {% endif %}>{{ venue.name }}</option>
+        {% endfor %}
+        <option value="other">{% trans 'Other' %}</option>
+    </select>
+</div>
+
+
+
+<div class="col-md-4 mb-3 venue" id="new_venue_fields" style="display: none;">
+    <label for="new_venue_name" class="form-label fw-bold">{% trans 'Venue Name' %}</label>
+    <input type="text" name="new_venue_name" id="new_venue_name" class="form-control">
+</div>
+
+<div class="col-md-4 mb-3 venue" id="new_venue_fields1" style="display: none;">
+    <label for="new_venue_address" class="form-label fw-bold">{% trans 'Venue Address' %}</label>
+    <input type="text" name="new_venue_address" id="new_venue_address" class="form-control">
+</div>
+
+<div class="col-md-4 mb-3 venue" id="new_venue_fields2" style="display: none;">
+    <label for="new_venue_capacity" class="form-label fw-bold">{% trans 'Venue Capacity' %}</label>
+    <input type="number" name="new_venue_capacity" id="new_venue_capacity" class="form-control">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="start_date" class="form-label fw-bold">{% trans 'Start Date' %}</label>
+    {% if lead.event %}
+        <input type="date" name="start_date" id="start_date" class="form-control" value="{{ lead.event.start_date|date:'Y-m-d' }}">
+    {% else %}
+        <input type="date" name="start_date" id="start_date" class="form-control">
+    {% endif %}
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="end_date" class="form-label fw-bold">{% trans 'End Date' %}</label>
+    <input type="date" name="end_date" id="end_date" class="form-control" value="{{ lead.event.end_date|date:'Y-m-d' }}">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="type_of_event" class="form-label fw-bold">{% trans 'Type of Event' %}</label>
+    <select name="type_of_event" id="type_of_event" class="form-control">
+        {% for choice in type_of_event_choices %}
+            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="client_name" class="form-label fw-bold">{% trans 'Client Name' %}</label>
+    <input type="text" name="client_name" id="client_name" class="form-control" value="{{ lead.client.name }}">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="client_number" class="form-label fw-bold">{% trans 'Client Number' %}</label>
+    <input type="text" name="client_number" id="client_number" class="form-control" pattern="[0-9]{10}" title="{% trans 'Enter a 10-digit mobile number' %}" value="{{ lead.client.number }}">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="client_email" class="form-label fw-bold">{% trans 'Client Email' %}</label>
+    <input type="email" name="client_email" id="client_email" class="form-control" value="{{ lead.client.email }}">
+</div>
+
+<div class="col-md-4 mb-3 display-hidden" style="display: none;">
+    <label for="leadperson" class="form-label fw-bold">{% trans 'Lead Person' %}</label>
+    <input type="checkbox" name="leadperson" id="leadperson" class="form-check-input" value="True">
+</div>
+
+<div class="col-md-4 mb-3">
+    <label for="date" class="form-label fw-bold">{% trans 'Date' %}</label>
+    <input type="date" name="date" id="date" class="form-control" value="{{ lead.sales.date|date:'Y-m-d' }}">
+</div>
+
+
+<div class="col-md-4 mb-3">
+    <label for="referral" class="form-label fw-bold">{% trans 'Referral' %}</label>
+    <input name="referral" id="referral" class="form-control" value="{{ lead.sales.referral }}">
+</div>
+</div>
+
+                    
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">{% trans 'Update Lead' %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    // JavaScript function for showing/hiding additional fields for a new venue
+    function showHideVenueFields() {
+        var venueSelect = document.getElementById("venue");
+        var venueFields = document.querySelectorAll('.venue');
+
+        if (venueSelect.value === "other") {
+            venueFields.forEach(function (field) {
+                field.style.display = "block";
+            });
+        } else {
+            venueFields.forEach(function (field) {
+                field.style.display = "none";
+            });
+        }
+    }
+    function validateVenueName() {
+        var venueSelect = document.getElementById("venue");
+        var venueNameInput = document.getElementById("new_venue_name");
+
+        if (venueSelect.value === "other" && venueNameInput.value === "") {
+            alert("{% trans 'Please provide a venue name.' %}");
+            return false; // Prevent form submission
+        }
+        return true; // Proceed with form submission
+    }
+</script>
+{% endblock main %}
